@@ -11,7 +11,7 @@ function Statistics(props) {
       <p>Total: {good + neutral + bad}</p>
       <p>
         Positive feedback:{' '}
-        {Math.round((good / (good + neutral + bad)) * 100) || 0}
+        {Math.round((good / (good + neutral + bad)) * 100) || 0} %
       </p>
     </>
   );

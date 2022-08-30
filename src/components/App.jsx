@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
+import Section from './Section/Section';
 import Statistics from './Statistics/Statistics';
+import Notification from './Notification/Notification';
+import { Main } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -34,12 +37,18 @@ export class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     return (
-      <div>
-        <p>Please leave feedback</p>
-        <FeedbackOptions onBtnClick={this.onClickBtn} />
-        <p>Statistics</p>
-        <Statistics good={good} neutral={neutral} bad={bad} />
-      </div>
+      <Main>
+        <Section title="Please leave feedback">
+          <FeedbackOptions onBtnClick={this.onClickBtn} />
+        </Section>
+        <Section title="Statistics">
+          {good + neutral + bad ? (
+            <Statistics good={good} neutral={neutral} bad={bad} />
+          ) : (
+            <Notification message={'There is no feedback'} />
+          )}
+        </Section>
+      </Main>
     );
   }
 }
